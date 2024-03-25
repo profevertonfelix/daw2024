@@ -21,7 +21,7 @@
 	else{
 		echo "Bem vindo, sr Cadastrado";
 		$_SESSION["logadoAdm"]=true;
-		$_SESSION["idAdm"] = $retorno['id'];
+		$_SESSION["idAdm"] = $retorno['id_usuarios'];
 		$_SESSION["nomeAdm"] = $retorno['nome'];
 		header("location:adm/index.php");
 		

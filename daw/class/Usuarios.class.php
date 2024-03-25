@@ -24,6 +24,18 @@
 		public function setSenha($valor){
 			$this->senha = $valor;
 		}
+		public function getNome(){
+			return $this->nome;
+		}
+		public function setNome($valor){
+			$this->nome = $valor;
+		}
+		public function getAdm(){
+			return $this->adm;
+		}
+		public function setAdm($valor){
+			$this->adm = $valor;
+		}
 		
 	}
 ?>

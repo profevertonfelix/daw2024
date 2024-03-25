@@ -5,5 +5,10 @@
 	}
 	echo "bem vindo, ".$_SESSION['nomeAdm'].".";
 	
-	//Agora é pra criar o inserir administrador, dentro da pasta ADM
+	if(isset($_GET['admOk']))
+		echo "Novo administrador cadastrado com sucesso!";
+
 ?>
+<h2>Menu</h2>
+<a href="cadastrar.php">Cadastrar Adm</a><br />
+<a href="listar.php">Listar Adm</a><br />

@@ -24,5 +24,21 @@
 				return 0;//email nao cadastrado
 			}
 		}
+		public function inserir(Usuarios $usuario){
+			$sql= $this->conexao->prepare(
+			"INSERT INTO usuarios (email, nome, senha, adm) VALUES 
+			(:email, :nome, :senha, :adm)");
+			$sql->bindValue(":email", $usuario->getEmail());
+			$sql->bindValue(":nome", $usuario->getNome());
+			$sql->bindValue(":senha", $usuario->getSenha());
+			$sql->bindValue(":adm", $usuario->getAdm());
+			return $sql->execute();
+		}
+		public function listar(){
+			$sql = $this->conexao->prepare("
+			SELECT * FROM usuarios WHERE adm=true");
+			$sql->execute();
+			return $sql->fetchAll();
+		}
 	}
 ?>
