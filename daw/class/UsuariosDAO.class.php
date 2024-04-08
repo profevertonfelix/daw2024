@@ -40,5 +40,33 @@
 			$sql->execute();
 			return $sql->fetchAll();
 		}
+		public function excluir($id_usuario){
+			$sql = $this->conexao->prepare("
+				DELETE FROM usuarios WHERE id_usuarios = :id_usuarios
+			");
+			$sql->bindValue(":id_usuarios", $id_usuario);
+			return $sql->execute();
+		}
+		public function retornarUnico($id_usuario){
+			$sql = $this->conexao->prepare("
+				SELECT * FROM usuarios WHERE id_usuarios = :id_usuario
+			");
+			$sql->bindValue(":id_usuario", $id_usuario);
+			$sql->execute();
+			return $sql->fetch();
+		}
+		public function editar(Usuarios $objUsuario){
+			$sql = $this->conexao->prepare("
+				UPDATE usuarios 
+				SET nome = :nome, adm=:adm, email=:email
+				WHERE id_usuarios=:idusuarios
+			");
+			$sql->bindValue(":nome", $objUsuario->getNome());
+			$sql->bindValue(":adm", $objUsuario->getAdm());
+			$sql->bindValue(":email", $objUsuario->getEmail());
+			$sql->bindValue(":idusuarios", $objUsuario->getId_usuarios());
+			return $sql->execute();
+
+		}
 	}
 ?>
