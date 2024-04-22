@@ -18,6 +18,16 @@
 			$sql->bindValue(":foto", $produto->getFoto());
 			return $sql->execute();
 		}
+		public function listar(){
+			$sql = $this->conexao->prepare("
+			SELECT produtos.*, categorias.nome as categoria 
+			FROM produtos
+			INNER JOIN categorias
+			ON 
+			produtos.idcategorias=categorias.idcategorias");
+			$sql->execute();
+			return $sql->fetchAll();
+		}
 	
 	}
 ?>

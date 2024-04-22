@@ -20,17 +20,17 @@
 	else
 		echo "insucesso foto";
 	
-	$objUsuario = new Produtos();
-	$objUsuario->setNome($nome);
-	$objUsuario->setPreco($preco);
-	$objUsuario->setFoto($nomefoto);
-	$objUsuario->setIdcategoria($idcategoria);
+	$objProduto = new Produtos();
+	$objProduto->setNome($nome);
+	$objProduto->setPreco($preco);
+	$objProduto->setFoto($nomefoto);
+	$objProduto->setIdcategorias($idcategoria);
 	
-	$objUsuarioDAO =new UsuariosDAO();
-	//$retorno = $objUsuarioDAO->inserir($objUsuario);
-	//if($retorno)
-	//	header("location:index.php?admOk");
-	//else
-	//	header("location:cadastrar.php?error");
+	$objProdutoDAO =new ProdutosDAO();
+	$retorno = $objProdutoDAO->inserir($objProduto);
+	if($retorno)
+		header("location:listar.php?InserirOk");
+	else
+		header("location:cadastrar.php?error");
 	
 ?>
