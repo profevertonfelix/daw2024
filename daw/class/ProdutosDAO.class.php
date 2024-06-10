@@ -28,6 +28,15 @@
 			$sql->execute();
 			return $sql->fetchAll();
 		}
-	
+		public function retornarUnico($idprodutos){
+				$sql = $this->conexao->prepare("
+					SELECT produtos.*, categorias.nome as categoria FROM produtos
+					INNER JOIN categorias ON produtos.idcategorias=categorias.idcategorias 
+					WHERE produtos.idprodutos = :idprodutos
+					");
+				$sql->bindValue(":idprodutos", $idprodutos);
+				$sql->execute();
+				return $sql->fetch();
+		}
 	}
 ?>
